@@ -55,7 +55,7 @@ var AudioPlayer = React.createClass({
     this.props.isPlaying({
       isPlaying: false
     });
-  }
+  },
 
   handleError() {
     this.refs.audioNode.load();
