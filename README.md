@@ -16,5 +16,5 @@ How to install and run
 
   
 
-I made this using using Simple Redux Boilerplate by David Tsai (tsaiDavid) 
+I made this using Simple Redux Boilerplate by David Tsai (tsaiDavid) 
 (https://github.com/tsaiDavid/simple-redux-boilerplate)
