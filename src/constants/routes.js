@@ -1,2 +1,1 @@
-
-export const Route = ["home","search"];
+export const Route = ["home", "search"];

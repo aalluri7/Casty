@@ -1,8 +1,8 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from '../reducers';
-import createLogger from 'redux-logger';
-import thunk from 'redux-thunk';
-import DevTools from '../containers/DevTools';
+import { createStore, applyMiddleware, compose } from "redux";
+import rootReducer from "../reducers";
+import createLogger from "redux-logger";
+import thunk from "redux-thunk";
+import DevTools from "../containers/DevTools";
 
 /**
  * Entirely optional, this tiny library adds some functionality to
@@ -24,8 +24,8 @@ module.exports = function configureStore(initialState) {
 
   // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
   if (module.hot) {
-    module.hot.accept('../reducers', () =>
-      store.replaceReducer(require('../reducers'))
+    module.hot.accept("../reducers", () =>
+      store.replaceReducer(require("../reducers"))
     );
   }
 

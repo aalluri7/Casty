@@ -3,12 +3,14 @@ function getvalue(theObject, predicate) {
   if (theObject instanceof Array) {
     for (var i = 0; i < theObject.length; i++) {
       result = getvalue(theObject[i], predicate);
-      if (result) { return result; }
+      if (result) {
+        return result;
+      }
     }
   } else {
     for (var prop in theObject) {
       if (predicate(prop, theObject[prop])) {
-        return theObject[prop]
+        return theObject[prop];
       }
 
       if (theObject[prop] instanceof Object || theObject[prop] instanceof Array)
@@ -18,5 +20,4 @@ function getvalue(theObject, predicate) {
   return result;
 }
 
-
-export default getvalue
+export default getvalue;

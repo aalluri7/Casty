@@ -1,13 +1,13 @@
 function debounce(fn, delay) {
   var timer = null;
-  return function () {
-    var context = this, args = arguments;
+  return function() {
+    var context = this,
+      args = arguments;
     clearTimeout(timer);
-    timer = setTimeout(function () {
+    timer = setTimeout(function() {
       fn.apply(context, args);
     }, delay);
   };
 }
 
-
-export default debounce
+export default debounce;

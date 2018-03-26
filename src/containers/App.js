@@ -1,11 +1,11 @@
-import React, { Component, PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import LoadingPage from '../components/LoadingPage';
-import TopBar from '../components/TopBar';
-import * as AppActions from '../actions/AppActions';
-import Player from '../components/Player.js';
-import SearchPage from '../components/SearchPage.js';
+import React, { Component, PropTypes } from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import LoadingPage from "../components/LoadingPage";
+import TopBar from "../components/TopBar";
+import * as AppActions from "../actions/AppActions";
+import Player from "../components/Player.js";
+import SearchPage from "../components/SearchPage.js";
 
 /**
  * It is common practice to have a 'Root' container/component require our main App (this one).
@@ -32,13 +32,11 @@ import SearchPage from '../components/SearchPage.js';
 
 
  */
-export default class App extends Component {
-
+class App extends Component {
   componentDidMount() {
-      window.addEventListener('hashchange', this.hashchange.bind(this));
-      console.log(window.location.hash.slice(1));
-      this.props.actions.setPageView(window.location.hash.slice(1));
-
+    window.addEventListener("hashchange", this.hashchange.bind(this));
+    console.log(window.location.hash.slice(1));
+    this.props.actions.setPageView(window.location.hash.slice(1));
   }
   hashchange() {
     console.log(window.location.hash.slice(1));
@@ -51,10 +49,12 @@ export default class App extends Component {
 
     return (
       <div>
-        <TopBar data={app} actions={actions} > </TopBar>
-        <LoadingPage data={app} actions={actions}></LoadingPage>
-        <Player currentEpisode={app.currentEpisode} ></Player>
-     </div>
+        <TopBar data={app} actions={actions}>
+          {" "}
+        </TopBar>
+        <LoadingPage data={app} actions={actions} />
+        <Player currentEpisode={app.currentEpisode} />
+      </div>
     );
   }
 }
@@ -84,8 +84,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(AppActions, dispatch),
-
+    actions: bindActionCreators(AppActions, dispatch)
   };
 }
 
@@ -97,7 +96,4 @@ function mapDispatchToProps(dispatch) {
  * More info: https://github.com/rackt/react-redux
  */
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

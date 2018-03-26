@@ -1,5 +1,5 @@
-var React = require('react'),
-    { PropTypes } = React;
+var React = require("react"),
+  { PropTypes } = React;
 
 var AudioPlayer = React.createClass({
   propTypes: {
@@ -11,27 +11,25 @@ var AudioPlayer = React.createClass({
     onEnd: React.PropTypes.func.isRequired
   },
   getInitialState() {
-   return {
-
-     currentTime: 0,
-     isPlaying: true
-
-   }
+    return {
+      currentTime: 0,
+      isPlaying: true
+    };
   },
 
   componentDidMount() {
     var node = this.getDOMNode();
-    node.addEventListener('progress', this.handleProgress);
-    node.addEventListener('timeupdate', this.handleTimeUpdate);
-    node.addEventListener('ended', this.handleMediaEnd);
-    node.addEventListener('error', this.handleError);
-    node.addEventListener('pause', this.handlePause);
-    node.addEventListener('play', this.handlePlay);
-    node.addEventListener('playing', this.handlePlaying);
+    node.addEventListener("progress", this.handleProgress);
+    node.addEventListener("timeupdate", this.handleTimeUpdate);
+    node.addEventListener("ended", this.handleMediaEnd);
+    node.addEventListener("error", this.handleError);
+    node.addEventListener("pause", this.handlePause);
+    node.addEventListener("play", this.handlePlay);
+    node.addEventListener("playing", this.handlePlaying);
 
     this.updateIsPlaying();
   },
-  handlePlaying(){
+  handlePlaying() {
     this.setState({
       isPlaying: true
     });
@@ -39,7 +37,7 @@ var AudioPlayer = React.createClass({
       isPlaying: true
     });
   },
-  handlePlay(){
+  handlePlay() {
     this.setState({
       isPlaying: true
     });
@@ -47,7 +45,7 @@ var AudioPlayer = React.createClass({
       isPlaying: true
     });
   },
-  handlePause(){
+  handlePause() {
     this.setState({
       isPlaying: false
     });
@@ -59,11 +57,11 @@ var AudioPlayer = React.createClass({
 
   handleError() {
     this.refs.audioNode.load();
-    if(this.props.isPlaying){
+    if (this.props.isPlaying) {
       this.refs.audioNode.play();
     }
 
-    console.log('erroring');
+    console.log("erroring");
     console.log(this.props.defaultTime);
     this.refs.audioNode.currentTime = this.state.currentTime || 0;
   },
@@ -85,24 +83,23 @@ var AudioPlayer = React.createClass({
   componentWillUnmount() {
     var node = this.getDOMNode();
 
-    node.removeEventListener('progress', this.handleProgress);
-    node.removeEventListener('timeupdate', this.handleTimeUpdate);
-    node.removeEventListener('ended', this.handleMediaEnd);
+    node.removeEventListener("progress", this.handleProgress);
+    node.removeEventListener("timeupdate", this.handleTimeUpdate);
+    node.removeEventListener("ended", this.handleMediaEnd);
   },
 
   render() {
     return (
-      <audio ref="audioNode" preload='auto'>
-        <source src={this.props.source}
-                type='audio/mpeg' />
+      <audio ref="audioNode" preload="auto">
+        <source src={this.props.source} type="audio/mpeg" />
       </audio>
     );
   },
 
   handleTimeUpdate() {
     var node = this.getDOMNode(),
-        currentTime = node.currentTime,
-        trackDuration = node.duration;
+      currentTime = node.currentTime,
+      trackDuration = node.duration;
 
     this.props.onTimeUpdate({
       currentTime: currentTime,
@@ -117,8 +114,8 @@ var AudioPlayer = React.createClass({
 
   handleProgress() {
     var node = this.getDOMNode(),
-        trackDuration = node.duration,
-        buffered = node.buffered;
+      trackDuration = node.duration,
+      buffered = node.buffered;
 
     this.setState({
       currentTime: trackDuration
@@ -127,7 +124,6 @@ var AudioPlayer = React.createClass({
     this.props.onProgress({
       trackDuration: trackDuration,
       buffered: buffered
-
     });
   },
 
@@ -140,7 +136,7 @@ var AudioPlayer = React.createClass({
 
   updateIsPlaying() {
     var node = this.getDOMNode(),
-        isPlaying = this.props.isPlaying;
+      isPlaying = this.props.isPlaying;
 
     if (isPlaying) {
       node.play();
@@ -151,7 +147,7 @@ var AudioPlayer = React.createClass({
 
   updateSource() {
     var node = this.getDOMNode(),
-        isPlaying = this.props.isPlaying;
+      isPlaying = this.props.isPlaying;
 
     node.pause();
     this.props.onTimeUpdate({

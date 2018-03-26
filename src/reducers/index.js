@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux';
-import app from './app';
+import { combineReducers } from "redux";
+import app from "./app";
 
 /**
  * combineReducers is important to understand. As your app might grow in size
@@ -15,7 +15,7 @@ import app from './app';
  * More info: http://rackt.org/redux/docs/api/combineReducers.html
  */
 const rootReducer = combineReducers({
-  app, // you might be used to: counter: counter,
+  app // you might be used to: counter: counter,
 });
 
 export default rootReducer;
