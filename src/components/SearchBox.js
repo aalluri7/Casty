@@ -22,6 +22,7 @@ let SearchBox = React.createClass({
             value={this.props.textfield}
             placeholder="Feed Url or Search Term"
             onChange={this.handleChange}
+            onKeyDown={(e)=>{e.stopPropagation()}}
           />
           <input style={this.props.btnstyles} type="submit" value="Go" />
         </form>
