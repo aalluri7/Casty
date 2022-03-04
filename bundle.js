@@ -17660,8 +17660,8 @@ function xmlToJson(xml) {
       return function (n, o) {
         var i = o().app.cachedPodcasts;
         i[e] && (n(r(i[e])), n(l(e)), n(u()));
-
-        fetch(e)
+        const proxyurl = `https://api.codetabs.com/v1/proxy/?quest=${e}`;
+        fetch(proxyurl)
           .then((response) => response.text())
           .then((str) => {
             console.log({ str });
