@@ -9,7 +9,7 @@ function xmlToJson(xml) {
       obj["@attributes"] = {};
       for (var j = 0; j < xml.attributes.length; j++) {
         var attribute = xml.attributes.item(j);
-        obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+        obj[attribute.nodeName] = attribute.nodeValue;
       }
     }
   } else if (xml.nodeType == 3) {
@@ -18303,9 +18303,9 @@ function xmlToJson(xml) {
             o.default.createElement(s.default, {
               data: this.props.data,
               title: this.props.data.feed.title,
-              subtitle: this.props.data.feed.summary,
+              subtitle: this.props.data.feed.summary  || this.props.data.feed.description,
               actions: this.props.actions,
-              img: this.props.data.feed.image,
+              img: this.props.data.feed.image.url,
             }),
             o.default.createElement(d.default, {
               data: this.props.data,
